@@ -1,0 +1,44 @@
+.form {
+  max-width: 100%;
+  margin: 8px auto;
+  background: white;
+  text-align: left;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.form p {
+  text-align: center;
+  font-size: 34px;
+  font-weight: 600;
+}
+
+.form label {
+  color: #aaaaaa;
+  display: inline-block;
+  margin: 25px 0 15px;
+  font-size: 0.6em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+.form input {
+  display: block;
+  padding: 10px 6px;
+  width: 100%;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 1px solid #dddddd;
+  color: #555555;
+}
+
+.submit button {
+  background: #4285f4;
+  border: 0;
+  padding: 10px 20px;
+  margin-top: 20px;
+  color: white;
+  /* border-radius: 20px; */
+  width: 100%;
+}
