@@ -1,0 +1,65 @@
+.topMenu {
+  /*background-color: pink;*/
+  /*margin-top: 31px;*/
+  /*margin-left: 54px;*/
+  /*background: #ffffff;*/
+  padding: 10px 30px;
+  color: #ffffff;
+  height: 78px;
+}
+
+.desktopContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+.desktopContainer svg {
+  font-size: 42px;
+  color: #f24b6a;
+}
+.menuLogo {
+  /* margin-left: 54px; */
+}
+
+.desktopLinks li {
+  /* font-family: Montserrat; */
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 21px;
+  color: #888888;
+  list-style-type: none;
+  display: inline-block;
+  margin: 8px;
+  cursor: pointer;
+}
+
+.desktopButton {
+  display: flex;
+  /* font-family: Montserrat; */
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 21px;
+  border: 1px solid #f24b6a;
+  border-radius: 15px;
+  color: #f24b6a;
+  width: 140px;
+  height: 30px;
+  justify-content: center;
+  align-items: center;
+  margin-left: 24px;
+  background: transparent;
+}
+
+.desktopButton:hover {
+  background-color: #f24b6a;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.desktopMenu {
+  display: flex;
+  align-items: center;
+}

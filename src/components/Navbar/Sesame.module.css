@@ -1,0 +1,94 @@
+@keyframes menuAnimation {
+  0% {
+    transform: translate(0%, 0%);
+  }
+  25% {
+    transform: translate(25%, 0%);
+  }
+  50% {
+    transform: translate(50%, 0%);
+  }
+  75% {
+    transform: translate(75%, 0%);
+  }
+  100% {
+    transform: translate(100%, 0%);
+  }
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  padding-bottom: 36px;
+}
+
+.floating {
+  z-index: 9999;
+  height: 345px;
+  width: 213px;
+  background: #2a293a;
+  position: fixed;
+  top: 0px;
+  left: -213px;
+  border-radius: 1px;
+  animation-name: menuAnimation;
+  animation-duration: 180ms;
+  /*animation-delay: 200ms;*/
+  animation-fill-mode: forwards;
+  /*transition-timing-function: ease-out;*/
+  /*transition: all 1s ease;*/
+}
+
+.sesameContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 14px 20px;
+  color: #ffffff;
+  border-bottom: 1px solid #5f5d73;
+}
+
+.sesameLogo {
+  padding-bottom: 45px;
+  font-size: 42px;
+  color: #f24b6a;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.sesameLinks {
+  margin-bottom: 50px;
+}
+
+.sesameLinks a {
+  display: flex;
+  flex-direction: column;
+  color: #ffffff;
+  text-decoration: none;
+  /* font-family: Montserrat; */
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  padding-left: 18px;
+}
+
+.ghostButton {
+  display: flex;
+  justify-content: center;
+  /* font-family: Montserrat; */
+  font-style: normal;
+  font-weight: 500;
+  font-size: 9px;
+  line-height: 134.09%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #f24b6a;
+  width: 115px;
+  height: 26px;
+  border: 1px solid #f24b6a;
+  border-radius: 15px;
+  background: transparent;
+}

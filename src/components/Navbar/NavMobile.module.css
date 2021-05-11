@@ -1,0 +1,47 @@
+.mobileContainer {
+  z-index: 999;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  /*border-bottom: 1px solid rgba(136, 136, 136, 0.3);*/
+  margin: 0px auto;
+  transition: all 0.3s ease-in-out 0s;
+  padding: 16px 0px;
+}
+.mobileContainer svg {
+  font-size: 42px;
+  color: #f24b6a;
+}
+.ghostButton {
+  display: flex;
+  justify-content: center;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 9px;
+  line-height: 134.09%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #f24b6a;
+  width: 115px;
+  height: 26px;
+  border: 1px solid #f24b6a;
+  border-radius: 15px;
+  background: transparent;
+}
+
+.burgerMenu {
+  width: 45px;
+  height: 45px;
+}
+
+.logoGlobe {
+  padding-left: 60px;
+}
+
+.test {
+  transform: translate(-20%, 0%);
+  transition: transform all 3s;
+}
