@@ -3,37 +3,34 @@ import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import styles from './auth.module.css';
 
-const Signup = () => {
+const Login = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
-  const passwordConfirmRef = useRef();
-  const { signup } = useAuth();
+  const { login } = useAuth();
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-      return setError("Passwords do not match")
-    }
     try {
       setError('');
       setLoading(true);
-      await signup(emailRef.current.value, passwordRef.current.value);
+      await login(emailRef.current.value, passwordRef.current.value);
       history.push('/dashboard');
     } catch {
-      setError('Failed to create an account');
+      setError('Failed to sign in');
     }
     setLoading(false);
   }
+
 
   return (
     <>
       <div className={styles.container}>
         <div className={styles.signup}>
           <div className={styles.form}>
-            <p>Sign Up</p>
+            <p>Log In</p>
             {error && <div className={styles.alert}>{error}</div>}
             <form onSubmit={handleSubmit}>
               <div id="email">
@@ -44,17 +41,16 @@ const Signup = () => {
                 <label></label>
                 <input type="password" ref={passwordRef} required placeholder="Password"/>
               </div>
-              <div id="password-confirm">
-                <label></label>
-                <input type="password" ref={passwordConfirmRef} required placeholder="Confirm Password"/>
-              </div>
               <div className={styles.submit}>
-                <button disabled={loading} type="submit">Sign Up</button>
+                <button disabled={loading} type="submit">Log In</button>
               </div>
             </form>
+            <div style={{textAlign: "center"}}>
+              <Link to="/forgot-password">Forgot Password?</Link>
+            </div>
           </div>
           <div>
-            Already have an account? <Link to="/login">Log In</Link>
+            Do not have an account? <Link to="/signup">Sign Up</Link>
           </div>
         </div>
       </div>
@@ -62,4 +58,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Login;

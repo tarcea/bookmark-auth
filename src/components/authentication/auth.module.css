@@ -5,12 +5,17 @@
   text-align: left;
   padding: 30px;
   border-radius: 10px;
+  border: 1px solid #dddddd;
+  padding-bottom: 24px;
+  border-radius: 4px;
 }
 
 .form p {
   text-align: center;
   font-size: 34px;
   font-weight: 600;
+  margin-bottom: 8px;
+  margin-top: 0px;
 }
 
 .form label {
@@ -33,7 +38,8 @@
   color: #555555;
 }
 
-.submit button {
+.submit button,
+.bbt {
   background: #4285f4;
   border: 0;
   padding: 10px 20px;
@@ -41,4 +47,34 @@
   color: white;
   /* border-radius: 20px; */
   width: 100%;
+  cursor: pointer;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+}
+
+.alert {
+  padding: 12px;
+  background: rgb(241, 180, 192);
+  color: brown;
+  margin-top: 12px;
+}
+.success {
+  margin-top: 12px;
+  padding: 12px;
+  background: rgb(195, 243, 195);
+  color: green;
+}
+
+.container {
+  min-height: 100vh;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signup {
+  width: 100%;
+  max-width: 400px;
 }
