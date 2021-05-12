@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from './NavbarDesktop.module.css';
-import { FaBattleNet } from 'react-icons/fa';
+import { IoAppsSharp } from 'react-icons/io5';
 import { useAuth } from '../../contexts/AuthContext';
 import { Link, useHistory } from 'react-router-dom';
 
@@ -49,7 +49,7 @@ const NavbarDesktop = (props) => {
   return (
     <div className={styles.topMenu}>
       <div className={styles.desktopContainer} style={noLine}>
-        <FaBattleNet 
+        <IoAppsSharp 
           className={style.menuLogo}
           onClick={() => history.push('/')}
         />

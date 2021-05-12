@@ -61,7 +61,7 @@
   margin-bottom: 50px;
 }
 
-.sesameLinks a {
+.sesameLinks ip {
   display: flex;
   flex-direction: column;
   color: #ffffff;

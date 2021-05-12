@@ -1,35 +1,82 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { AiOutlineQuestionCircle } from 'react-icons/ai';
 import { GoLocation } from 'react-icons/go';
 import style from './Sesame.module.css';
-import { FaBattleNet } from 'react-icons/fa';
+import { IoAppsSharp } from 'react-icons/io5';
+import { useHistory } from 'react-router';
+import { useAuth } from '../../contexts/AuthContext';
 
 const Sesame = ({ openSesame, handleOpen}) => {
+  const { currentUser, logout } = useAuth();
+  const history = useHistory();
+  const [error, setError] = useState('');
+
   const handleSesame = () => {
       handleOpen(!openSesame);
-  }
+  };
+  const handleLogout = async () => {
+    setError('')
+    try {
+      await logout();
+      history.push('/login')
+    } catch {
+      setError('Failed to log out')
+    }
+  };
 
   return (
     <div className={style.floating}>
-          <div className={style.sesameContainer}>
-            <div className={style.sesameLogo}>
-              <FaBattleNet />
-            </div>
-            <div className={style.sesameLinks}>
-              <div className={style.link}>
-                <GoLocation />
-                <a href="#www" onClick={handleSesame}>Login</a>
-              </div>
-              <div className={style.link}>
-                <AiOutlineQuestionCircle />
-                <a  onClick={() => {handleSesame()}} style={{cursor:"pointer"}}>Edit Profile</a>
-              </div>
-            </div>
+      <div className={style.sesameContainer}>
+        <div className={style.sesameLogo}>
+          <IoAppsSharp />
+        </div>
+        <div className={style.sesameLinks}>
+          <div className={style.link}>
+            <GoLocation />
+            <ip
+              style={{cursor:"pointer"}} 
+              onClick={handleSesame}
+            >
+              {currentUser 
+                ? <span 
+                    onClick={handleLogout}
+                  >
+                    Logout
+                  </span> 
+                : <span
+                    onClick={() => history.push('/login')}
+                  >
+                    Login
+                  </span>
+              }
+            </ip>
           </div>
-          <div className={style.ghostButton} style={{color:"#FFFFFF", background:"#F24B6A", margin:"33px auto 0"}}>
-            <p onClick={handleSesame}>Get started</p>
+          <div className={style.link}>
+            <AiOutlineQuestionCircle />
+            <ip 
+              onClick={() => {handleSesame()}} 
+              style={{cursor:"pointer"}}
+            >
+              {currentUser 
+            ? <span
+                onClick={() => history.push('/dashboard')}
+              >
+                Edit Profile
+              </span>
+            : <span
+                onClick={() => history.push('/about')}
+              >
+                About
+              </span>
+            }
+            </ip>
           </div>
         </div>
+      </div>
+      <div className={style.ghostButton} style={{color:"#FFFFFF", background:"#F24B6A", margin:"20px auto 0"}}>
+        <p onClick={handleSesame}>Get started</p>
+      </div>
+    </div>
   );
 }
 
