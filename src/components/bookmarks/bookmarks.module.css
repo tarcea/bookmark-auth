@@ -16,3 +16,39 @@
   width: 0;
   margin: 100px auto;
 }
+
+.box {
+  /*border:1px solid ;*/
+  position: relative;
+  padding: 8px;
+  background-color: #ffffff;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+  /*box-shadow: 1px 1px 1px 1px grey;*/
+  border-radius: 8px;
+  margin: 0 auto;
+  max-width: 400px;
+}
+.box h5 {
+  text-align: left;
+}
+
+.box img {
+  max-width: 200px;
+  max-height: 100px;
+  width: auto;
+  height: auto;
+  border-radius: 4px;
+}
+
+.img {
+  text-align: left;
+}
+.description {
+  /* margin-bottom: 50px; */
+}
+
+.description p {
+  font-size: 16px;
+  font-weight: 100;
+  text-align: justify;
+}
