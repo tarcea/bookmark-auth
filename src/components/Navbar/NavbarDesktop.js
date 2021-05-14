@@ -51,7 +51,7 @@ const NavbarDesktop = (props) => {
       <div className={styles.desktopContainer} style={noLine}>
         <IoAppsSharp 
           className={style.menuLogo}
-          onClick={() => history.push('/')}
+          onClick={() => history.push('/bookmarks')}
         />
         <div className={styles.desktopMenu}>
           <div style={whiteStyle}>
@@ -90,14 +90,17 @@ const NavbarDesktop = (props) => {
 
             </ul>
           </div>
+        {currentUser &&
         <div 
           style={style} 
           className={styles.desktopButton}
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
+          onClick={() => history.push('/home')}
         >
           <p>Get started</p>
         </div>
+        }
         </div>
       </div>
     </div>

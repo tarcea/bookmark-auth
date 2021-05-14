@@ -28,7 +28,7 @@ const Sesame = ({ openSesame, handleOpen}) => {
     <div className={style.floating}>
       <div className={style.sesameContainer}>
         <div className={style.sesameLogo}>
-          <IoAppsSharp />
+          <IoAppsSharp onClick={() => history.push('/bookmarks')} />
         </div>
         <div className={style.sesameLinks}>
           <div className={style.link}>

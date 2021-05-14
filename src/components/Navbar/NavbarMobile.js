@@ -82,16 +82,20 @@ const NavbarMobile = () => {
         onClick={() => setSesame(!openSesame)}
       />
       <div className={styles.logoGlobe}>
-        <IoAppsSharp />
+        <IoAppsSharp onClick={() => history.push('/bookmarks')} />
       </div>
+      {currentUser && 
       <div 
         className={styles.ghostButton}
         style={style}
         onMouseEnter={() => setHover(true)}
-        onMouseLeave={() => setHover(false)}>
+        onMouseLeave={() => setHover(false)}
+        onClick={() => history.push('/home')}
+      >
             {/*is it hover needed on mobile view???*/}
         Get started
       </div>
+      }
     </div>
     </div>
   );

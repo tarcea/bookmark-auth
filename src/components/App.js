@@ -28,7 +28,8 @@ function App() {
           <AuthProvider>
             <Navbar width={width}/>
             <Switch>
-              <Route exact path="/" component={Home} />
+              {/* <Route exact path="/" component={Home} /> */}
+              <PrivateRoute exact path="/home" component={Home} />
               <PrivateRoute path="/dashboard" component={UserDashboard} />
               <Route path="/bookmarks" component={Bookmarks} />
               <Route path="/signup" component={Signup} />
