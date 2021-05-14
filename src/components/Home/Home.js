@@ -6,30 +6,26 @@ const Home = () => {
   const [url, setUrl] = useState('');
   const [data, setData] = useState({ });
   const [loading, setLoading] = useState(false);
-  const key = process.env.REACT_APP_LINKPREVIEW_KEY
-  const baseUrl = process.env.REACT_APP_LINKPREVIEW_BASE_URL
+  const [error, setError] = useState('');
+  const key = process.env.REACT_APP_LINKPREVIEW_KEY;
+  const baseUrl = process.env.REACT_APP_LINKPREVIEW_BASE_URL;
 
-  console.log(loading)
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const result = await axios(
-  //       `https://api.linkpreview.net/?key=${KEY}&q=${url}`,
-  //     );
-  //     setData(result.data);
-  //   };
-  //   fetchData();
-  // }, []);
 
   const fetchData = async () => {
     setLoading(true);
-    const result = await axios.post(
-      baseUrl,
-      {
-        q: url,
-        key: key
-      }
-    );
-    setData(result.data);
+    setError('');
+    try {
+      const result = await axios.post(
+        baseUrl,
+        {
+          q: url,
+          key: key
+        }
+      );
+      setData(result.data);
+    } catch (err) {
+      setError(err.response.data.description)
+    }
     setLoading(false);
   };
 
@@ -51,12 +47,16 @@ const Home = () => {
         <input type="text" name="url" value={url} onChange={onInputChange}/>
         <button type="submit" onClick={() => fetchData()}>bookmark</button>
       </form>
-      {/*  */}
+      {error && <div>{error}</div>}
       {loading 
         ? 
           <div>loading...</div> 
         : 
-        <LinkPreview data={data} />}
+        <LinkPreview 
+          data={data} 
+          setUrl={setUrl} 
+        />
+        }
     </div>
   );
 };

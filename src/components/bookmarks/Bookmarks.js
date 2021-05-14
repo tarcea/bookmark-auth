@@ -13,9 +13,12 @@ const Bookmarks = () => {
   });
   const { items, loading } = data;
   const [sample, setSample] = useState({
-    name: "gogonel",
+    title: "gogonel",
     createdAt: timestamp,
-    userId: currentUser.uid
+    userId: currentUser?.uid || "",
+    description: 'description',
+    image: 'image',
+    url: 'url'
   });
 
   const createNew = async (collection, doc) => {
@@ -56,11 +59,11 @@ const Bookmarks = () => {
           {items ? items.length : ''}
         </div>
       </div>
+      <h1 onClick={() => createNew("bookmarks", sample)} style={{marginTop:'100px'}}>creaza</h1>
       <div className={styles.parent}>
-      <h1 onClick={() => createNew("bookmarks", sample)}>creaza</h1>
         {items
             ? items.map((value, index, array) => 
-            <Bookmark bookmark={array[array.length - 1 - index]} key={index} />)
+            <Bookmark bookmark={value} key={value.id} currentUser={currentUser} />)
             : ''}
       </div>
     </div>

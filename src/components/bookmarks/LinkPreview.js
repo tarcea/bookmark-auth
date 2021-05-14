@@ -1,20 +1,33 @@
 import React from 'react';
 import styles from './bookmarks.module.css';
 
-const LinkPreview = ({ data }) => {
+const LinkPreview = (props) => {
+  const { data, setUrl, setPreview, createBookmark } =props;
+  const cancelPreview = () => {
+    setPreview(false);
+    setUrl('');
+  };
   return (
-    <div className={styles.box}>
-      <h5><strong>{data.title}</strong></h5>
-      <div className={styles.img}>
-        <img src={data.image} alt={data.title} />
+    <div>
+      <div>
+        <button 
+          className={styles.buttonGhost} 
+          onClick={cancelPreview}
+        >
+          cancel
+        </button>
+        <button 
+          className={styles.buttonGhost}  
+          onClick={createBookmark}
+        >
+          bookmark
+        </button>
       </div>
-        <div className={styles.description}>
-          <p>{data.description}</p>
-        </div>
-      {/* <button className="button-x">X</button> */}
-      {/* <a href={data.url} target="_blank" rel="noopener noreferrer">
-      <button className="button-ghost-go" >Go There</button></a> */}
-    </div>
+      <p>Domain: { data.url }</p>
+      <p>Title: { data.title }</p>
+      <p>Description: { data.description }</p>
+      <img height="100px" width="100px" src={data.image} alt={data.title} />
+      </div>
   );
 };
 

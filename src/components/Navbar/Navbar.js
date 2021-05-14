@@ -21,7 +21,7 @@ const Navbar = ({ width }) => {
   }, [])
 
   return (
-    <div className={style.navbarContainer} style={{background:`${navColor}`}}>
+    <div className={style.navbarContainer} style={{background:`${navColor}`, zIndex: "999"}}>
 
     {width >= 900
       ?
