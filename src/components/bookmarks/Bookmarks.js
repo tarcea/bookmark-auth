@@ -59,10 +59,12 @@ const Bookmarks = () => {
           {items ? items.length : ''}
         </div>
       </div>
-      <h1 onClick={() => createNew("bookmarks", sample)} style={{marginTop:'100px'}}>creaza</h1>
+      {currentUser && 
+        <h1 onClick={() => createNew("bookmarks", sample)} style={{marginTop:'100px'}}>creaza</h1>
+      }
       <div className={styles.parent}>
         {items
-            ? items.map((value, index, array) => 
+            ? [...items].reverse().map((value, index, array) => 
             <Bookmark bookmark={value} key={value.id} currentUser={currentUser} />)
             : ''}
       </div>
