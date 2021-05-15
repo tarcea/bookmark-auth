@@ -13,7 +13,7 @@ const UserDashboard = () => {
     setError('')
     try {
       await logout();
-      history.push('/login')
+      history.push('/home')
     } catch {
       setError('Failed to log out')
     }

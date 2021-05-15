@@ -46,7 +46,11 @@ const NavbarMobile = () => {
   };
 
   const whiteStyle = {
-    color: scrollUp > 60 ? "#FFFFFF" : "#7B7B7B"
+    color: scrollUp > 60 ? "#F24B6A" : "#ff5722"
+  };
+
+  const redStyle = {
+    backgroundColor: scrollUp > 60 ? "#F24B6A" : "#ff5722"
   };
 
   const noLine = {
@@ -57,7 +61,7 @@ const NavbarMobile = () => {
     setError('')
     try {
       await logout();
-      history.push('/login')
+      history.push('/home')
     } catch {
       setError('Failed to log out')
     }
@@ -68,7 +72,8 @@ const NavbarMobile = () => {
     {openSesame &&
     <Sesame 
       openSesame={openSesame} 
-      handleOpen={handleOpen} 
+      handleOpen={handleOpen}
+      redStyle={redStyle}
     />
     }
     <div 
@@ -82,7 +87,10 @@ const NavbarMobile = () => {
         onClick={() => setSesame(!openSesame)}
       />
       <div className={styles.logoGlobe}>
-        <IoAppsSharp onClick={() => history.push('/bookmarks')} />
+        <IoAppsSharp
+          style={whiteStyle}
+          onClick={() => history.push('/home')} 
+        />
       </div>
       {currentUser && 
       <div 

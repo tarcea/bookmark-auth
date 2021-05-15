@@ -38,7 +38,7 @@ const NavbarDesktop = (props) => {
     setError('')
     try {
       await logout();
-      history.push('/login')
+      history.push('/home')
     } catch {
       setError('Failed to log out')
     }
@@ -51,7 +51,7 @@ const NavbarDesktop = (props) => {
       <div className={styles.desktopContainer} style={noLine}>
         <IoAppsSharp 
           className={style.menuLogo}
-          onClick={() => history.push('/bookmarks')}
+          onClick={() => history.push('/home')}
         />
         <div className={styles.desktopMenu}>
           <div style={whiteStyle}>

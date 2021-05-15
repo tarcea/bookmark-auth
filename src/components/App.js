@@ -29,9 +29,9 @@ function App() {
             <Navbar width={width}/>
             <Switch>
               {/* <Route exact path="/" component={Home} /> */}
-              <PrivateRoute exact path="/home" component={Home} />
+              <Route exact path="/home" component={Home} />
               <PrivateRoute path="/dashboard" component={UserDashboard} />
-              <Route path="/bookmarks" component={Bookmarks} />
+              {/* <Route path="/bookmarks" component={Bookmarks} /> */}
               <Route path="/signup" component={Signup} />
               <Route path="/login" component={Login} />
               <Route path="/forgot-password" component={ForgotPassword} />

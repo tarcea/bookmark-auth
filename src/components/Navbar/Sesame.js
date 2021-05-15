@@ -6,7 +6,7 @@ import { IoAppsSharp } from 'react-icons/io5';
 import { useHistory } from 'react-router';
 import { useAuth } from '../../contexts/AuthContext';
 
-const Sesame = ({ openSesame, handleOpen}) => {
+const Sesame = ({ openSesame, handleOpen, redStyle}) => {
   const { currentUser, logout } = useAuth();
   const history = useHistory();
   const [error, setError] = useState('');
@@ -28,7 +28,7 @@ const Sesame = ({ openSesame, handleOpen}) => {
     <div className={style.floating}>
       <div className={style.sesameContainer}>
         <div className={style.sesameLogo}>
-          <IoAppsSharp onClick={() => history.push('/bookmarks')} />
+          {/* <IoAppsSharp onClick={() => history.push('/bookmarks')} /> */}
         </div>
         <div className={style.sesameLinks}>
           <div className={style.link}>
@@ -73,7 +73,7 @@ const Sesame = ({ openSesame, handleOpen}) => {
           </div>
         </div>
       </div>
-      <div className={style.ghostButton} style={{color:"#FFFFFF", background:"#F24B6A", margin:"20px auto 0"}}>
+      <div className={style.ghostButton} style={{color:"#FFFFFF", background:"#F24B6A", margin:"20px auto 0", ...redStyle}}>
         <p onClick={handleSesame}>Get started</p>
       </div>
     </div>

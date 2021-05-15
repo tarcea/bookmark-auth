@@ -1,62 +1,99 @@
 import React, { useEffect, useState } from 'react';
-import LinkPreview from '../Bookmarks/LinkPreview';
-import axios from 'axios';
+import { useAuth } from '../../contexts/AuthContext';
+import { db } from '../../firebase';
+import Bookmarks from '../Bookmarks/Bookmarks';
+import CreateBookmark from '../Bookmarks/CreateBookmark';
+import Filter from './Filter';
 
 const Home = () => {
-  const [url, setUrl] = useState('');
-  const [data, setData] = useState({ });
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
-  const key = process.env.REACT_APP_LINKPREVIEW_KEY;
-  const baseUrl = process.env.REACT_APP_LINKPREVIEW_BASE_URL;
+  const { currentUser, logout } = useAuth();
+  const [filterOption, setFilterOption] = useState('all bookmarks')
+  const [data, setData] = useState({
+    error: null,
+    loading: true,
+    items: [],
+  });
+  const { items, loading } = data;
 
-
-  const fetchData = async () => {
-    setLoading(true);
-    setError('');
-    try {
-      const result = await axios.post(
-        baseUrl,
-        {
-          q: url,
-          key: key
-        }
+  useEffect(() => {
+    const unsubscribe = db
+      .collection("bookmarks")
+      .orderBy("createdAt")
+      .onSnapshot(
+        (snapshot) => {
+          setData({
+            error: null,
+            loading: false,
+            items: snapshot.docs.map((doc) => ({
+              id: doc.id,
+              ...doc.data()
+            })),
+          });
+        },
+        (error) => {
+          setData({
+            error: error,
+            loading: false,
+            items: [],
+          });
+        },
       );
-      setData(result.data);
-    } catch (err) {
-      setError(err.response.data.description)
-    }
-    setLoading(false);
+      return () => unsubscribe();
+  }, []);
+
+  const publicItems = (items) => {
+    return items.filter(item => item.public);
   };
 
-  const onFormSubmit = (e) => {
-    e.preventDefault();
-    console.log('martor')
-    setUrl('')
+  const myPublicItems = (items) => {
+    return publicItems(items).filter(item => item.userId === currentUser.uid)
+  }
+
+  const privateItems = (items) => {
+    return items.filter(item => !item.public);
   };
 
-  const onInputChange = (e) => {
-    setUrl(e.target.value)
+  const myPrivateItems = (items) => {
+    return privateItems(items).filter(item => item.userId === currentUser.uid);
   };
 
-  console.log(data)
+  const userItems = (items) => {
+    return [...publicItems(items), ...myPrivateItems(items)]
+  };
+
+  const selectItemsToShow = (items) => {
+    let option = [];
+      switch (filterOption) {
+        case "all bookmarks":
+         option =  userItems(items)
+          break;
+        case "my public bookmarks":
+          option = myPublicItems(items)
+          break;
+        case "my private bookmarks":
+          option = myPrivateItems(items)
+          break;
+        default:
+      }
+    return option
+  };
+
 
   return (
-    <div style={{marginTop: '200px'}}>
-      <form onSubmit={onFormSubmit}>
-        <input type="text" name="url" value={url} onChange={onInputChange}/>
-        <button type="submit" onClick={() => fetchData()}>bookmark</button>
-      </form>
-      {error && <div>{error}</div>}
-      {loading 
-        ? 
-          <div>loading...</div> 
-        : 
-        <LinkPreview 
-          data={data} 
-          setUrl={setUrl} 
+    <div>
+      {currentUser ? 
+      (
+      <>
+        <CreateBookmark />
+        <Filter
+          filterOption={filterOption}
+          setFilterOption={setFilterOption}
         />
-        }
+        <Bookmarks items={selectItemsToShow(items)}/>
+      </>
+      ) :
+      <Bookmarks items={publicItems(items)}/>
+    }
     </div>
   );
 };

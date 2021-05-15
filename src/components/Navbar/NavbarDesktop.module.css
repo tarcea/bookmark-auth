@@ -16,7 +16,7 @@
 }
 .desktopContainer svg {
   font-size: 42px;
-  color: #f24b6a;
+  color: #ff5722;
 }
 .menuLogo {
   /* margin-left: 54px; */
@@ -42,9 +42,9 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 21px;
-  border: 1px solid #f24b6a;
+  border: 1px solid #ff5722;
   border-radius: 15px;
-  color: #f24b6a;
+  color: #ff5722;
   width: 140px;
   height: 30px;
   justify-content: center;
@@ -54,7 +54,7 @@
 }
 
 .desktopButton:hover {
-  background-color: #f24b6a;
+  background-color: #ff5722;
   color: #ffffff;
   cursor: pointer;
 }

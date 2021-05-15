@@ -11,7 +11,7 @@
 }
 .mobileContainer svg {
   font-size: 42px;
-  color: #f24b6a;
+  color: #ff5722;
 }
 .ghostButton {
   display: flex;
@@ -24,10 +24,10 @@
   display: flex;
   align-items: center;
   text-align: center;
-  color: #f24b6a;
+  color: #ff5722;
   width: 115px;
   height: 26px;
-  border: 1px solid #f24b6a;
+  border: 1px solid #ff5722;
   border-radius: 15px;
   background: transparent;
 }

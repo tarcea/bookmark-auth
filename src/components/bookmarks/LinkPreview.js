@@ -1,15 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './bookmarks.module.css';
 
 const LinkPreview = (props) => {
-  const { data, setUrl, setPreview, createBookmark } =props;
+  const { data, setUrl, setPreview, createNew, isPublic, setIsPublic } =props;
+
   const cancelPreview = () => {
     setPreview(false);
     setUrl('');
   };
+
+  const onInputChange = () => {
+    setIsPublic(!isPublic)
+  };
+console.log(isPublic)
   return (
     <div>
       <div>
+      <label>public</label>
+      <input type="checkbox" name="public" checked={isPublic} onChange={onInputChange}/>
         <button 
           className={styles.buttonGhost} 
           onClick={cancelPreview}
@@ -18,7 +26,7 @@ const LinkPreview = (props) => {
         </button>
         <button 
           className={styles.buttonGhost}  
-          onClick={createBookmark}
+          onClick={createNew}
         >
           bookmark
         </button>
