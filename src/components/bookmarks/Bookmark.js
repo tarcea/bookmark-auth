@@ -3,8 +3,12 @@ import styles from './bookmarks.module.css';
 
 const Bookmark = ({ bookmark, currentUser }) => {
 
-  const deleteBookmark = () => {
-    console.log(bookmark.id, 'deleted')
+  const deleteBookmark = (bookmark) => {
+    const confirmDelete = window.confirm(`Are you sure you want to delete "${bookmark.title}" bookmark??`);
+    if(!confirmDelete) {
+      return
+    }
+    console.log('deleted', bookmark.title)
   };
 
   return (
@@ -19,7 +23,7 @@ const Bookmark = ({ bookmark, currentUser }) => {
         {currentUser && (currentUser.uid === bookmark.userId) && (
           <button 
             className={styles.buttonX} 
-            onClick={deleteBookmark}
+            onClick={() => deleteBookmark(bookmark)}
           >
             X
           </button>
