@@ -65,7 +65,7 @@ const Home = () => {
     let option = [];
       switch (filterOption) {
         case "all bookmarks":
-         option =  userItems(items)
+         option =  userItems(items).sort((a, b) => a.createdAt > b.createdAt ? 1 : -1)
           break;
         case "my public bookmarks":
           option = myPublicItems(items)
