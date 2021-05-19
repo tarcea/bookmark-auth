@@ -3,6 +3,7 @@ import { useAuth } from '../../contexts/AuthContext';
 import { db } from '../../firebase';
 import Bookmarks from '../Bookmarks/Bookmarks';
 import CreateBookmark from '../Bookmarks/CreateBookmark';
+import Search from '../Bookmarks/Search';
 import Filter from './Filter';
 
 const Home = () => {
@@ -81,6 +82,7 @@ const Home = () => {
 
   return (
     <div>
+      <h1 style={{padding: '8px', textAlign: 'center'}}>my cool bookmark</h1>
       {currentUser ? 
       (
       <>
@@ -89,10 +91,10 @@ const Home = () => {
           filterOption={filterOption}
           setFilterOption={setFilterOption}
         />
-        <Bookmarks items={selectItemsToShow(items)}/>
+        <Search items={selectItemsToShow(items)}/>
       </>
       ) :
-      <Bookmarks items={publicItems(items)}/>
+      <Search items={publicItems(items)}/>
     }
     </div>
   );

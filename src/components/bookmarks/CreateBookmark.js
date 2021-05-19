@@ -72,7 +72,7 @@ const CreateBookmark = () => {
   };
 
   return (
-    <div style={{marginTop: '200px'}}>
+    <div>
       <form onSubmit={onFormSubmit}>
         <input 
           type="text" 
