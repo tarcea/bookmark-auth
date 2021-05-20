@@ -77,8 +77,10 @@ const CreateBookmark = () => {
         <input 
           type="text" 
           name="url" 
-          value={url} 
+          value={url}
+          placeholder="paste here the web address "
           onChange={onInputChange}
+          style={{width: "200px"}}
         />
     
           <button 

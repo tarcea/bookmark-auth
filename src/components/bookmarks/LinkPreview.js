@@ -14,10 +14,9 @@ const LinkPreview = (props) => {
   };
 
   return (
-    <div className={styles.preview}>
-      <div>
+    <div style={{textAlign: 'center'}}>
       <label>public</label>
-      <input type="checkbox" name="public" checked={isPublic} onChange={onInputChange}/>
+      <input type="checkbox" name="public" checked={isPublic} onChange={onInputChange} style={{width: "20px"}}/>
         <button 
           className={styles.buttonGhost} 
           onClick={cancelPreview}
@@ -30,7 +29,6 @@ const LinkPreview = (props) => {
         >
           bookmark
         </button>
-      </div>
       <p>Domain: { data.url }</p>
       <p>Title: { data.title }</p>
       <p>Description: { data.description }</p>

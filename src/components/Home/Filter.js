@@ -15,6 +15,7 @@ const Filter = ({ filterOption, setFilterOption }) => {
           id="filter" 
           value={filterOption} 
           onChange={handleFilterChange}
+          style={{maxWidth: '400px'}}
         >
           <option value="all bookmarks">all bookmarks</option>
           <option value="my public bookmarks">my public bookmarks</option>
