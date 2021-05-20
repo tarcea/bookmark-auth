@@ -26,10 +26,18 @@ function App() {
   return (
         <Router>
           <AuthProvider>
-            <Navbar width={width}/>
+            <Navbar 
+              width={width}
+            />
             <Switch>
               {/* <Route exact path="/" component={Home} /> */}
-              <Route exact path="/home" component={Home} />
+              <Route 
+                exact 
+                path="/home" 
+                component={
+                  () => <Home width={width} />
+                } 
+              />
               <PrivateRoute path="/dashboard" component={UserDashboard} />
               {/* <Route path="/bookmarks" component={Bookmarks} /> */}
               <Route path="/signup" component={Signup} />

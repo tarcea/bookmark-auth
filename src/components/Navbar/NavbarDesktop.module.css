@@ -45,7 +45,7 @@
   border: 1px solid #ff5722;
   border-radius: 15px;
   color: #ff5722;
-  width: 140px;
+  width: 100px;
   height: 30px;
   justify-content: center;
   align-items: center;
@@ -62,4 +62,12 @@
 .desktopMenu {
   display: flex;
   align-items: center;
+}
+
+.nameRed:hover {
+  color: #f24b6a;
+}
+
+.nameOrange:hover {
+  color: #ff5722;
 }

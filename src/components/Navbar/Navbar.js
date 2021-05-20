@@ -3,7 +3,7 @@ import NavbarDesktop from './NavbarDesktop';
 import NavbarMobile from './NavbarMobile';
 import style from './Navbar.module.css';
 
-const Navbar = ({ width }) => {
+const Navbar = ({ width, setAddBookmark, addBookmark }) => {
 
   const [navColor, setNavColor] = useState("transparent");
   const setColor = () => {
@@ -13,7 +13,19 @@ const Navbar = ({ width }) => {
       setNavColor("rgba(128,128,128,0.6)")
     :
       setNavColor("rgba(255, 255, 255, 0)")
-  }
+  };
+
+  // const scrollToTop = () => {
+  //   window.scrollTo({
+  //     top: 0,
+  //     behavior: "smooth"
+  //   });
+  // };
+
+  // const showAddBookmarkForm = () => {
+  //   setAddBookmark(!addBookmark);
+  //   scrollToTop();
+  // };
 
   useEffect(() => {
     window.addEventListener("scroll", setColor);
@@ -29,7 +41,6 @@ const Navbar = ({ width }) => {
       :
       <NavbarMobile />
   }
-  
     </div>
   );
 }

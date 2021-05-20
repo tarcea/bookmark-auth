@@ -5,11 +5,23 @@ import style from './Sesame.module.css';
 import { IoAppsSharp } from 'react-icons/io5';
 import { useHistory } from 'react-router';
 import { useAuth } from '../../contexts/AuthContext';
+import { scrollToTop } from '../../utils';
 
 const Sesame = ({ openSesame, handleOpen, redStyle}) => {
   const { currentUser, logout } = useAuth();
   const history = useHistory();
   const [error, setError] = useState('');
+
+  const navigateHome = () => {
+    history.push('/home');
+    scrollToTop();
+    handleOpen(false);
+  };
+
+  const navigateProfile = () => {
+    history.push('/dashboard');
+    handleOpen(false);
+  };
 
   const handleSesame = () => {
       handleOpen(!openSesame);
@@ -23,12 +35,21 @@ const Sesame = ({ openSesame, handleOpen, redStyle}) => {
       setError('Failed to log out')
     }
   };
-
+console.log(redStyle())
   return (
     <div className={style.floating}>
       <div className={style.sesameContainer}>
         <div className={style.sesameLogo}>
-          {/* <IoAppsSharp onClick={() => history.push('/bookmarks')} /> */}
+          <div>
+            {currentUser &&
+              <span
+                onClick={navigateProfile}
+                style={{color: redStyle()}}
+              >
+                {currentUser.email}
+              </span>
+            }
+          </div>
         </div>
         <div className={style.sesameLinks}>
           <div className={style.link}>
@@ -57,24 +78,17 @@ const Sesame = ({ openSesame, handleOpen, redStyle}) => {
               onClick={() => {handleSesame()}} 
               style={{cursor:"pointer"}}
             >
-              {currentUser 
-            ? <span
-                onClick={() => history.push('/dashboard')}
-              >
-                Edit Profile
-              </span>
-            : <span
+             <span
                 onClick={() => history.push('/about')}
               >
                 About
               </span>
-            }
             </ip>
           </div>
         </div>
       </div>
-      <div className={style.ghostButton} style={{color:"#FFFFFF", background:"#F24B6A", margin:"20px auto 0", ...redStyle}}>
-        <p onClick={handleSesame}>Get started</p>
+      <div className={style.ghostButton} style={{color:"#FFFFFF", background: redStyle(), margin:"20px auto 0"}}>
+        <p onClick={navigateHome}>Home</p>
       </div>
     </div>
   );

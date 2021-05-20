@@ -12,9 +12,9 @@ const LinkPreview = (props) => {
   const onInputChange = () => {
     setIsPublic(!isPublic)
   };
-console.log(isPublic)
+
   return (
-    <div>
+    <div className={styles.preview}>
       <div>
       <label>public</label>
       <input type="checkbox" name="public" checked={isPublic} onChange={onInputChange}/>

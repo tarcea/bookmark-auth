@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './home.module.css'
 
 const Filter = ({ filterOption, setFilterOption }) => {
 
@@ -7,9 +8,8 @@ const Filter = ({ filterOption, setFilterOption }) => {
   };
 
   return (
-    <div>
+    <div className={styles.filter}>
       <form>
-        <label>filter </label>
         <select 
           name="filter" 
           id="filter" 

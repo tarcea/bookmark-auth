@@ -51,10 +51,8 @@
 
 .sesameLogo {
   padding-bottom: 45px;
-  font-size: 42px;
+  text-align: center;
   color: #f24b6a;
-  width: 50%;
-  margin: 0 auto;
 }
 
 .sesameLinks {

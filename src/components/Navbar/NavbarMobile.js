@@ -5,6 +5,7 @@ import styles from './NavMobile.module.css';
 import { IoAppsSharp } from 'react-icons/io5';
 import { useAuth } from '../../contexts/AuthContext';
 import { useHistory } from 'react-router';
+import { scrollToTop } from '../../utils';
 
 const NavbarMobile = () => {
   const [scrollUp, setScrollUp] = useState(null);
@@ -49,9 +50,10 @@ const NavbarMobile = () => {
     color: scrollUp > 60 ? "#F24B6A" : "#ff5722"
   };
 
-  const redStyle = {
-    backgroundColor: scrollUp > 60 ? "#F24B6A" : "#ff5722"
+  const redStyle = () => {
+    return scrollUp > 60 ? "#F24B6A" : "#ff5722"
   };
+  
 
   const noLine = {
     borderBottom: scrollUp > 60 ? 0 : "1px solid rgba(136, 136, 136, 0.3)"
@@ -65,6 +67,11 @@ const NavbarMobile = () => {
     } catch {
       setError('Failed to log out')
     }
+  };
+
+  const navigateHome = () => {
+    history.push('/home');
+    scrollToTop();
   };
 
   return (
@@ -89,21 +96,28 @@ const NavbarMobile = () => {
       <div className={styles.logoGlobe}>
         <IoAppsSharp
           style={whiteStyle}
-          onClick={() => history.push('/home')} 
+          onClick={navigateHome} 
         />
       </div>
-      {currentUser && 
       <div 
         className={styles.ghostButton}
         style={style}
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
-        onClick={() => history.push('/home')}
       >
-            {/*is it hover needed on mobile view???*/}
-        Get started
+        {currentUser 
+          ? <span 
+              onClick={handleLogout}
+            >
+              Logout
+            </span> 
+          : <span
+              onClick={() => history.push('/login')}
+            >
+              Login
+            </span>
+        }
       </div>
-      }
     </div>
     </div>
   );

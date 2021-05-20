@@ -16,7 +16,7 @@
 .ghostButton {
   display: flex;
   justify-content: center;
-  font-family: Montserrat;
+  /* font-family: Montserrat; */
   font-style: normal;
   font-weight: 500;
   font-size: 9px;
@@ -25,20 +25,16 @@
   align-items: center;
   text-align: center;
   color: #ff5722;
-  width: 115px;
-  height: 26px;
+  width: 50px;
+  height: 24px;
   border: 1px solid #ff5722;
   border-radius: 15px;
   background: transparent;
 }
 
 .burgerMenu {
-  width: 45px;
-  height: 45px;
-}
-
-.logoGlobe {
-  padding-left: 60px;
+  width: 42px;
+  height: 42px;
 }
 
 .test {

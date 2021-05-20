@@ -31,6 +31,7 @@
   border-radius: 8px;
   margin: 0 auto;
   max-width: 300px;
+  cursor: pointer;
 }
 .box h5 {
   text-align: left;
@@ -118,4 +119,26 @@
   padding: 8px;
   width: 50%;
   border-radius: 4px;
+}
+.inputPreview {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputPreview button {
+  margin-left: 8px;
+  border: 1px solid;
+  border-radius: 4px;
+  padding: 8px;
+}
+
+.inputPreview input {
+  border: 0;
+  padding: 8px;
+
+  border-radius: 4px;
+}
+
+.preview {
+  text-align: center;
 }

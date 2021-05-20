@@ -37,7 +37,6 @@ const CreateBookmark = () => {
 
   const onFormSubmit = (e) => {
     e.preventDefault();
-    console.log('martor')
     // setUrl('')
   };
 
@@ -52,6 +51,7 @@ const CreateBookmark = () => {
       description: data.description,
       image: data.image,
       public: isPublic,
+      url: data.url
     }
   }
 
@@ -72,15 +72,15 @@ const CreateBookmark = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={onFormSubmit}>
+    <div className={styles.inputPreview}>
+     {!preview ? ( <form onSubmit={onFormSubmit}>
         <input 
           type="text" 
           name="url" 
           value={url} 
           onChange={onInputChange}
         />
-        {!preview ? (
+    
           <button 
             type="submit" 
             onClick={() => fetchData()}
@@ -88,16 +88,7 @@ const CreateBookmark = () => {
           >
             preview
           </button>
-        ) : (
-          <button
-            onClick={createNew}
-          >
-            Bookmark
-          </button>
-        )
-        }
-        
-      </form>
+      </form>) : ""}
       {error && 
           <div className={styles.danger}>
             {`linkpreview.net error: ${error}`}
