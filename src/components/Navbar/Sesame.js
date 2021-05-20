@@ -79,7 +79,7 @@ console.log(redStyle())
               style={{cursor:"pointer"}}
             >
              <span
-                onClick={() => history.push('/about')}
+                onClick={() => history.push('/')}
               >
                 About
               </span>

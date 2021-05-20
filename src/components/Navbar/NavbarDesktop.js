@@ -70,8 +70,9 @@ const NavbarDesktop = () => {
             <ul>
               <li 
                 style={whiteStyle}
+                onClick={() => history.push("/")}
               >
-                
+                About
               </li>
 
               <li 
