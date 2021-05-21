@@ -26,11 +26,13 @@ function App() {
   return (
         <Router>
           <AuthProvider>
-            <Navbar 
-              width={width}
-            />
+            <Navbar width={width} />
             <Switch>
-              <Route exact path="/" component={About}/>
+              <Route 
+                exact 
+                path="/" 
+                component={About}
+              />
               <Route 
                 exact 
                 path="/home" 

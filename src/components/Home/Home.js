@@ -82,21 +82,21 @@ const Home = ({ width }) => {
 
   return (
     <div style={{marginTop: '90px'}}>
-      {currentUser ? 
-      (
-      <>
-      <div className={styles.inputs}>
-        <CreateBookmark />
-        <Filter
-          filterOption={filterOption}
-          setFilterOption={setFilterOption}
-        />
-      </div>
-        <Search items={selectItemsToShow(items)}/>
-        
-      </>
-      ) :
-      <Search items={publicItems(items)}/>
+      {currentUser 
+      ? (
+        <>
+        <div className={styles.inputs}>
+          <CreateBookmark />
+          <Filter
+            filterOption={filterOption}
+            setFilterOption={setFilterOption}
+          />
+        </div>
+          <Search items={selectItemsToShow(items)}/>
+          
+        </>
+        ) 
+      : <Search items={publicItems(items)}/>
     }
     </div>
   );

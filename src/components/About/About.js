@@ -5,7 +5,7 @@ import styles from './about.module.css';
 
 const About = () => {
   const history = useHistory();
-
+  
   const navigateTo = (to) => (e) => {
     history.push(`/${to}`);
     e.stopPropagation();

@@ -24,7 +24,7 @@
 
 .floating {
   z-index: 9999;
-  height: 345px;
+  height: 370px;
   width: 213px;
   background: #2a293a;
   position: fixed;
@@ -59,7 +59,7 @@
   margin-bottom: 50px;
 }
 
-.sesameLinks ip {
+.sesameLinks p {
   display: flex;
   flex-direction: column;
   color: #ffffff;

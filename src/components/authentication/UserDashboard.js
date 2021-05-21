@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
+// import { db } from '../../firebase';
 import styles from './auth.module.css';
 
 const UserDashboard = () => {
   const [error, setError] = useState('');
-  const { logout, currentUser } = useAuth();
+  const { logout, currentUser, deleteUser } = useAuth();
   const history = useHistory();
 
   const handleLogout = async () => {
@@ -19,16 +20,35 @@ const UserDashboard = () => {
     }
   };
 
+  const handleDelete = async () => {
+    setError('')
+    try {
+      const confirmDelete = window.confirm(`Are you sure you want to delete "${currentUser.email}" profile??`);
+    if(!confirmDelete) {
+      return
+    }
+      await deleteUser(currentUser);
+      console.log('Successfully deleted user');
+      history.push('/home');
+    } catch (err) {
+      setError('Failed deleting user')
+      console.log(err.message)
+    }
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.signup}>
         <div className={styles.form}>
         <p>Profile</p>
         {error && <div className={styles.alert}>{error}</div>}
-        <strong>Email: </strong> {currentUser.email}
+        <strong>Email: </strong> {currentUser.email}<br /><br />
         <div>
           <Link to="/update-profile">Update Profile</Link>
-        </div>
+        </div><br />
+        {/* <div onClick={handleDelete} style={{cursor: 'pointer', color: 'red'}}>
+          Delete Profile
+        </div> */}
           <div className={styles.submit}>
             <button type="submit" onClick={handleLogout}>Log Out</button>
           </div>

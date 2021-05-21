@@ -35,7 +35,7 @@ const Sesame = ({ openSesame, handleOpen, redStyle}) => {
       setError('Failed to log out')
     }
   };
-console.log(redStyle())
+
   return (
     <div className={style.floating}>
       <div className={style.sesameContainer}>
@@ -54,7 +54,7 @@ console.log(redStyle())
         <div className={style.sesameLinks}>
           <div className={style.link}>
             <GoLocation />
-            <ip
+            <p
               style={{cursor:"pointer"}} 
               onClick={handleSesame}
             >
@@ -70,11 +70,11 @@ console.log(redStyle())
                     Login
                   </span>
               }
-            </ip>
+            </p>
           </div>
           <div className={style.link}>
             <AiOutlineQuestionCircle />
-            <ip 
+            <p 
               onClick={() => {handleSesame()}} 
               style={{cursor:"pointer"}}
             >
@@ -83,7 +83,7 @@ console.log(redStyle())
               >
                 About
               </span>
-            </ip>
+            </p>
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import styles from './auth.module.css';
@@ -9,6 +9,7 @@ const Login = () => {
   const { login } = useAuth();
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const mountedRef = useRef(true);
   const history = useHistory();
 
   const handleSubmit = async (e) => {
@@ -16,6 +17,7 @@ const Login = () => {
     try {
       setError('');
       setLoading(true);
+      if (!mountedRef.current) return null
       await login(emailRef.current.value, passwordRef.current.value);
       history.push('/home');
     } catch {
@@ -23,6 +25,13 @@ const Login = () => {
     }
     setLoading(false);
   };
+
+  // cleanup
+  useEffect(() => {
+    return () => { 
+      mountedRef.current = false
+    }
+  }, []);
 
   return (
     <>

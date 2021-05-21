@@ -16,7 +16,7 @@ const Search = ({ items }) => {
   },[items]);
     
   const dSearch = () => {
-      return data.filter(item => item.title.toLowerCase().includes(searchTerm.toLowerCase()))
+    return data.filter(item => item.title.toLowerCase().includes(searchTerm.toLowerCase()))
   };
 
   return (

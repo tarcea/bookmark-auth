@@ -31,8 +31,6 @@ const Bookmark = ({ bookmark, currentUser }) => {
           </button>
         )
         }
-      {/* <a href={bookmark.url} target="_blank" rel="noopener noreferrer">
-      <button className={styles.buttonGhostGo} >Go There</button></a> */}
     </div>
   );
 };
