@@ -16,3 +16,20 @@
 .text p {
   line-height: 20px;
 }
+
+.container h1,
+span {
+  cursor: pointer;
+}
+
+.container button {
+  width: 100%;
+  border: 1px solid #ff5722;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.container button:hover {
+  color: white;
+  background-color: #ff5722;
+}
