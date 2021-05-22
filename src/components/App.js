@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Signup from './Authentication/Signup';
 import { AuthProvider } from '../contexts/AuthContext';
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './Home/Home';
 import UserDashboard from './Authentication/UserDashboard';
 import Login from './Authentication/Login';
