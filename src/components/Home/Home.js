@@ -62,11 +62,18 @@ const Home = ({ width }) => {
     return [...publicItems(items), ...myPrivateItems(items)]
   };
 
+  const myItems = (items) => {
+    return [...myPublicItems(items), ...myPrivateItems(items)];
+  };
+
   const selectItemsToShow = (items) => {
     let option = [];
       switch (filterOption) {
         case "all bookmarks":
-         option =  userItems(items).sort((a, b) => a.createdAt > b.createdAt ? 1 : -1)
+          option =  userItems(items).sort((a, b) => a.createdAt > b.createdAt ? 1 : -1)
+          break;
+        case "my bookmarks":
+          option =  myItems(items).sort((a, b) => a.createdAt > b.createdAt ? 1 : -1)
           break;
         case "my public bookmarks":
           option = myPublicItems(items)

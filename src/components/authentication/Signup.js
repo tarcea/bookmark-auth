@@ -7,7 +7,7 @@ const Signup = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
-  const { signup } = useAuth();
+  const { signup, currentUser } = useAuth();
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const mountedRef = useRef(true);
@@ -29,6 +29,7 @@ const Signup = () => {
     }
     setLoading(false);
   };
+
 
   // cleanup
   useEffect(() => {
