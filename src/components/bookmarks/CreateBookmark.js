@@ -92,9 +92,9 @@ const CreateBookmark = () => {
           </button>
       </form>) : ""}
       {error && 
-          <div className={styles.danger}>
+          <div className={styles.danger} onClick={cancelPreview}>
             {`linkpreview.net error: ${error}`}
-            <button className={styles.buttonX} onClick={cancelPreview} style={{top: "1px", right: "1px"}}>X</button>
+            {/* <button className={styles.buttonX} onClick={cancelPreview} style={{top: "-17px", right: "-22px", padding: "4px 7px"}}>X</button> */}
           </div>
           }
       {loading 
