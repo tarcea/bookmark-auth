@@ -39,7 +39,7 @@ const Home = ({ width }) => {
           });
         },
       );
-      return () => unsubscribe();
+    return () => unsubscribe();
   }, []);
 
   const publicItems = (items) => {
@@ -68,43 +68,42 @@ const Home = ({ width }) => {
 
   const selectItemsToShow = (items) => {
     let option = [];
-      switch (filterOption) {
-        case "all bookmarks":
-          option =  userItems(items).sort((a, b) => a.createdAt > b.createdAt ? 1 : -1)
-          break;
-        case "my bookmarks":
-          option =  myItems(items).sort((a, b) => a.createdAt > b.createdAt ? 1 : -1)
-          break;
-        case "my public bookmarks":
-          option = myPublicItems(items)
-          break;
-        case "my private bookmarks":
-          option = myPrivateItems(items)
-          break;
-        default:
-      }
+    switch (filterOption) {
+      case "all bookmarks":
+        option = userItems(items).sort((a, b) => a.createdAt > b.createdAt ? 1 : -1)
+        break;
+      case "my bookmarks":
+        option = myItems(items).sort((a, b) => a.createdAt > b.createdAt ? 1 : -1)
+        break;
+      case "my public bookmarks":
+        option = myPublicItems(items)
+        break;
+      case "my private bookmarks":
+        option = myPrivateItems(items)
+        break;
+      default:
+    }
     return option
   };
 
-
   return (
-    <div style={{marginTop: '90px'}}>
-      {currentUser 
-      ? (
-        <>
-        <div className={styles.inputs}>
-          <CreateBookmark />
-          <Filter
-            filterOption={filterOption}
-            setFilterOption={setFilterOption}
-          />
-        </div>
-          <Search items={selectItemsToShow(items)}/>
-          
-        </>
-        ) 
-      : <Search items={publicItems(items)}/>
-    }
+    <div style={{ marginTop: '90px' }}>
+      {currentUser
+        ? (
+          <>
+            <div className={styles.inputs}>
+              <CreateBookmark />
+              <Filter
+                filterOption={filterOption}
+                setFilterOption={setFilterOption}
+              />
+            </div>
+            <Search items={selectItemsToShow(items)} />
+
+          </>
+        )
+        : <Search items={publicItems(items)} />
+      }
     </div>
   );
 };
