@@ -7,7 +7,7 @@ import styles from './auth.module.css';
 
 const UserDashboard = () => {
   const [error, setError] = useState('');
-  const { logout, currentUser, deleteUser } = useAuth();
+  const { logout, currentUser } = useAuth();
   const history = useHistory();
 
   const handleLogout = async () => {
