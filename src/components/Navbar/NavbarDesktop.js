@@ -24,7 +24,7 @@ const NavbarDesktop = () => {
 
   const style = {
     background: scrollUp > 60 ? (inHover ? "#F24B6A" : "rgba(255, 255, 255, 0)") :
-    (inHover ? "#ff5722" : "rgba(255, 255, 255, 0)"),
+      (inHover ? "#ff5722" : "rgba(255, 255, 255, 0)"),
     color: scrollUp > 60 ? (inHover ? "#FFFFFF" : "#F24B6A") : (inHover ? "#FFFFFF" : "#ff5722")
   }
 
@@ -44,21 +44,21 @@ const NavbarDesktop = () => {
     setError('')
     try {
       await logout();
-      history.push('/home')
+      history.push('/')
     } catch {
       setError('Failed to log out')
     }
   };
 
   const navigateHome = () => {
-    history.push('/home');
+    history.push('/');
     scrollToTop();
   };
 
   return (
     <div className={styles.topMenu}>
       <div className={styles.desktopContainer} style={noLine}>
-        <IoAppsSharp 
+        <IoAppsSharp
           className={style.menuLogo}
           style={redStyle}
           onClick={navigateHome}
@@ -68,54 +68,54 @@ const NavbarDesktop = () => {
           </div>
           <div className={styles.desktopLinks} >
             <ul>
-              <li 
+              <li
                 style={whiteStyle}
                 onClick={navigateHome}
               >
                 Home
               </li>
-              <li 
+              <li
                 style={whiteStyle}
-                onClick={() => history.push('/')}
+                onClick={() => history.push('/about')}
               >
                 About
               </li>
 
-              <li 
-                style={whiteStyle} 
+              <li
+                style={whiteStyle}
               >
-                {currentUser 
-                ? <span
+                {currentUser
+                  ? <span
                     onClick={() => history.push('/dashboard')}
                     className={scrollUp > 60 ? styles.nameRed : styles.nameOrange}
                   >
                     {currentUser.email}
                   </span>
-                : <span></span>
+                  : <span></span>
                 }
               </li>
 
             </ul>
           </div>
-        <div 
-          style={style} 
-          className={styles.desktopButton}
-          onMouseEnter={() => setHover(true)}
-          onMouseLeave={() => setHover(false)}
-        >
-          {currentUser 
-            ? <span 
+          <div
+            style={style}
+            className={styles.desktopButton}
+            onMouseEnter={() => setHover(true)}
+            onMouseLeave={() => setHover(false)}
+          >
+            {currentUser
+              ? <span
                 onClick={handleLogout}
               >
                 Logout
-              </span> 
-            : <span
+              </span>
+              : <span
                 onClick={() => history.push('/login')}
               >
                 Login
               </span>
-          }
-        </div>
+            }
+          </div>
         </div>
       </div>
     </div>

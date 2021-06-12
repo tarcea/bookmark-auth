@@ -7,13 +7,13 @@ import { useHistory } from 'react-router';
 import { useAuth } from '../../contexts/AuthContext';
 import { scrollToTop } from '../../utils';
 
-const Sesame = ({ openSesame, handleOpen, redStyle}) => {
+const Sesame = ({ openSesame, handleOpen, redStyle }) => {
   const { currentUser, logout } = useAuth();
   const history = useHistory();
   const [error, setError] = useState('');
 
   const navigateHome = () => {
-    history.push('/home');
+    history.push('/');
     scrollToTop();
     handleOpen(false);
   };
@@ -24,13 +24,13 @@ const Sesame = ({ openSesame, handleOpen, redStyle}) => {
   };
 
   const handleSesame = () => {
-      handleOpen(!openSesame);
+    handleOpen(!openSesame);
   };
   const handleLogout = async () => {
     setError('')
     try {
       await logout();
-      history.push('/home')
+      history.push('/')
     } catch {
       setError('Failed to log out')
     }
@@ -44,7 +44,7 @@ const Sesame = ({ openSesame, handleOpen, redStyle}) => {
             {currentUser &&
               <span
                 onClick={navigateProfile}
-                style={{color: redStyle()}}
+                style={{ color: redStyle() }}
               >
                 {currentUser.email}
               </span>
@@ -55,31 +55,31 @@ const Sesame = ({ openSesame, handleOpen, redStyle}) => {
           <div className={style.link}>
             <GoLocation />
             <p
-              style={{cursor:"pointer"}} 
+              style={{ cursor: "pointer" }}
               onClick={handleSesame}
             >
-              {currentUser 
-                ? <span 
-                    onClick={handleLogout}
-                  >
-                    Logout
-                  </span> 
+              {currentUser
+                ? <span
+                  onClick={handleLogout}
+                >
+                  Logout
+                  </span>
                 : <span
-                    onClick={() => history.push('/login')}
-                  >
-                    Login
+                  onClick={() => history.push('/login')}
+                >
+                  Login
                   </span>
               }
             </p>
           </div>
           <div className={style.link}>
             <AiOutlineQuestionCircle />
-            <p 
-              onClick={() => {handleSesame()}} 
-              style={{cursor:"pointer"}}
+            <p
+              onClick={() => { handleSesame() }}
+              style={{ cursor: "pointer" }}
             >
-             <span
-                onClick={() => history.push('/')}
+              <span
+                onClick={() => history.push('/about')}
               >
                 About
               </span>
@@ -87,7 +87,7 @@ const Sesame = ({ openSesame, handleOpen, redStyle}) => {
           </div>
         </div>
       </div>
-      <div className={style.ghostButton} style={{color:"#FFFFFF", background: redStyle(), margin:"20px auto 0"}}>
+      <div className={style.ghostButton} style={{ color: "#FFFFFF", background: redStyle(), margin: "20px auto 0" }}>
         <p onClick={navigateHome}>Home</p>
       </div>
     </div>

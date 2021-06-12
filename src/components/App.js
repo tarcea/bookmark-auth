@@ -24,30 +24,33 @@ function App() {
   }, []);
 
   return (
-        <Router>
-          <AuthProvider>
-            <Navbar width={width} />
-            <Switch>
-              <Route 
-                exact 
-                path="/" 
-                component={About}
-              />
-              <Route 
-                exact 
-                path="/home" 
-                component={
-                  () => <Home width={width} />
-                } 
-              />
-              <PrivateRoute path="/dashboard" component={UserDashboard} />
-              <Route path="/signup" component={Signup} />
-              <Route path="/login" component={Login} />
-              <Route path="/forgot-password" component={ForgotPassword} />
-              <PrivateRoute path="/update-profile" component={UpdateProfile} />
-            </Switch>
-          </AuthProvider>
-        </Router>
+    <Router>
+      <AuthProvider>
+        <Navbar width={width} />
+        <Switch>
+          <Route
+            exact
+            path="/"
+            component={
+              () => <Home width={width} />
+            }
+          />
+          <Route
+            exact
+            path="/home"
+            component={
+              () => <Home width={width} />
+            }
+          />
+          <Route path="/about" component={About} />
+          <PrivateRoute path="/dashboard" component={UserDashboard} />
+          <Route path="/signup" component={Signup} />
+          <Route path="/login" component={Login} />
+          <Route path="/forgot-password" component={ForgotPassword} />
+          <PrivateRoute path="/update-profile" component={UpdateProfile} />
+        </Switch>
+      </AuthProvider>
+    </Router>
   );
 }
 

@@ -21,15 +21,16 @@ const NavbarMobile = () => {
 
   const getClient = (e) => {
     (e.clientX > 213 || (e.clientY < 18 || e.clientY > 360))
-    && setSesame(false)
+      && setSesame(false)
   }
 
   useEffect(() => {
     window.addEventListener("scroll", updateScroll);
     window.addEventListener("click", getClient);
-    return () => {window.removeEventListener("scroll", updateScroll);
-                  window.removeEventListener("click", getClient);
-                  }
+    return () => {
+      window.removeEventListener("scroll", updateScroll);
+      window.removeEventListener("click", getClient);
+    }
   }, [])
 
   const handleOpen = (newSesame) => {
@@ -37,12 +38,12 @@ const NavbarMobile = () => {
   }
 
   const handleClick = () => {
-      openSesame && setSesame(false);
+    openSesame && setSesame(false);
   };
 
   const style = {
     background: scrollUp > 60 ? "#F24B6A" :
-    (inHover ? "#F24B6A" : "rgba(255, 255, 255, 0)"),
+      (inHover ? "#F24B6A" : "rgba(255, 255, 255, 0)"),
     color: scrollUp > 60 ? "#FFFFFF" : (inHover ? "#FFFFFF" : "#F24B6A")
   };
 
@@ -53,7 +54,7 @@ const NavbarMobile = () => {
   const redStyle = () => {
     return scrollUp > 60 ? "#F24B6A" : "#ff5722"
   };
-  
+
 
   const noLine = {
     borderBottom: scrollUp > 60 ? 0 : "1px solid rgba(136, 136, 136, 0.3)"
@@ -63,62 +64,62 @@ const NavbarMobile = () => {
     setError('')
     try {
       await logout();
-      history.push('/home')
+      history.push('/')
     } catch {
       setError('Failed to log out')
     }
   };
 
   const navigateHome = () => {
-    history.push('/home');
+    history.push('/');
     scrollToTop();
   };
 
   return (
     <div>
-    {openSesame &&
-    <Sesame 
-      openSesame={openSesame} 
-      handleOpen={handleOpen}
-      redStyle={redStyle}
-    />
-    }
-    <div 
-      className={styles.mobileContainer} 
-      style={noLine} 
-      onClick={handleClick}
-      >
-      <VscMenu 
-        className={styles.burgerMenu}
-        style={whiteStyle}
-        onClick={() => setSesame(!openSesame)}
-      />
-      <div className={styles.logoGlobe}>
-        <IoAppsSharp
-          style={whiteStyle}
-          onClick={navigateHome} 
+      {openSesame &&
+        <Sesame
+          openSesame={openSesame}
+          handleOpen={handleOpen}
+          redStyle={redStyle}
         />
-      </div>
-      <div 
-        className={styles.ghostButton}
-        style={style}
-        onMouseEnter={() => setHover(true)}
-        onMouseLeave={() => setHover(false)}
+      }
+      <div
+        className={styles.mobileContainer}
+        style={noLine}
+        onClick={handleClick}
       >
-        {currentUser 
-          ? <span 
+        <VscMenu
+          className={styles.burgerMenu}
+          style={whiteStyle}
+          onClick={() => setSesame(!openSesame)}
+        />
+        <div className={styles.logoGlobe}>
+          <IoAppsSharp
+            style={whiteStyle}
+            onClick={navigateHome}
+          />
+        </div>
+        <div
+          className={styles.ghostButton}
+          style={style}
+          onMouseEnter={() => setHover(true)}
+          onMouseLeave={() => setHover(false)}
+        >
+          {currentUser
+            ? <span
               onClick={handleLogout}
             >
               Logout
-            </span> 
-          : <span
+            </span>
+            : <span
               onClick={() => history.push('/login')}
             >
               Login
             </span>
-        }
+          }
+        </div>
       </div>
-    </div>
     </div>
   );
 }
