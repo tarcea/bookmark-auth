@@ -1,36 +1,50 @@
 import React from 'react';
 import { db } from '../../firebase';
 import styles from './bookmarks.module.css';
+const placeholder = "https://cdn.dribbble.com/users/119159/screenshots/5718165/jazz-pattern-dribbble.jpg?compress=1&resize=800x600";
 
 const Bookmark = ({ bookmark, currentUser }) => {
 
   const deleteBookmark = (e) => {
     e.stopPropagation();
     const confirmDelete = window.confirm(`Are you sure you want to delete "${bookmark.title}" bookmark??`);
-    if(!confirmDelete) {
+    if (!confirmDelete) {
       return
     }
     db.collection('bookmarks').doc(bookmark.id).delete();
+  };
+
+  const editBookmark = (e) => {
+    e.stopPropagation();
+    alert(`edit '${bookmark.title}' ???`)
   };
 
   return (
     <div className={styles.box} onClick={() => window.open(bookmark.url, "_blank")}>
       <h5><strong>{bookmark.title}</strong></h5>
       <div className={styles.img} >
-        <img src={bookmark.image} alt={bookmark.title} />
+        <img src={bookmark.image || placeholder} alt={bookmark.title} />
       </div>
-        <div className={styles.description}>
-          <p>{bookmark.description}</p>
-        </div>
-        {currentUser && (currentUser.uid === bookmark.userId) && (
-          <button 
-            className={styles.buttonX} 
+      <div className={styles.description}>
+        <p>{bookmark.description}</p>
+      </div>
+      {currentUser && (currentUser.uid === bookmark.userId) && (
+        <>
+          <button
+            className={styles.buttonX}
             onClick={deleteBookmark}
           >
             X
           </button>
-        )
-        }
+          {/* <button
+            className={styles.buttonEdit}
+            onClick={editBookmark}
+          >
+            edit
+          </button> */}
+        </>
+      )
+      }
     </div>
   );
 };

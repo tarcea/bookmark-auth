@@ -56,8 +56,16 @@
 }
 .buttonX {
   position: absolute;
-  top: 8px;
+  top: 4px;
   right: 8px;
+  border-radius: 8px;
+  border: 1px solid #4a4a4a;
+}
+
+.buttonEdit {
+  position: absolute;
+  top: 4px;
+  left: 8px;
   border-radius: 8px;
   border: 1px solid #4a4a4a;
 }

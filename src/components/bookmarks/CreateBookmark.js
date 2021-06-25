@@ -43,7 +43,7 @@ const CreateBookmark = () => {
   const onInputChange = (e) => {
     setUrl(e.target.value)
   };
-  
+
   const ceateItem = (data) => {
     return {
       title: data.title,
@@ -57,7 +57,7 @@ const CreateBookmark = () => {
 
   const createNew = async () => {
     const doc = ceateItem(data)
-    await db.collection("bookmarks").add({...doc, createdAt: timestamp});
+    await db.collection("bookmarks").add({ ...doc, createdAt: timestamp });
     setData({});
     setUrl('')
     setPreview(false);
@@ -73,43 +73,43 @@ const CreateBookmark = () => {
 
   return (
     <div className={styles.inputPreview}>
-     {!preview ? ( <form onSubmit={onFormSubmit}>
-        <input 
-          type="text" 
-          name="url" 
+      {!preview ? (<form onSubmit={onFormSubmit}>
+        <input
+          type="text"
+          name="url"
           value={url}
           placeholder="paste here the web address "
           onChange={onInputChange}
-          style={{width: "200px"}}
+          style={{ width: "200px" }}
         />
-    
-          <button 
-            type="submit" 
-            onClick={() => fetchData()}
-            disabled={!url}
-          >
-            preview
-          </button>
+
+        <button
+          type="submit"
+          onClick={() => fetchData()}
+          disabled={!url}
+        >
+          preview
+        </button>
       </form>) : ""}
-      {error && 
-          <div className={styles.danger} onClick={cancelPreview}>
-            {`linkpreview.net error: ${error}`}
-            {/* <button className={styles.buttonX} onClick={cancelPreview} style={{top: "-17px", right: "-22px", padding: "4px 7px"}}>X</button> */}
-          </div>
-          }
-      {loading 
-        ? 
-          <div>loading...</div> 
+      {error &&
+        <div className={styles.danger} onClick={cancelPreview}>
+          {`linkpreview.net error: ${error}`}
+          {/* <button className={styles.buttonX} onClick={cancelPreview} style={{top: "-17px", right: "-22px", padding: "4px 7px"}}>X</button> */}
+        </div>
+      }
+      {loading
+        ?
+        <div>loading...</div>
         : (
-        !error && preview &&
-        <LinkPreview 
-          data={data} 
-          setUrl={setUrl}
-          setPreview={setPreview}
-          createNew={createNew}
-          isPublic={isPublic}
-          setIsPublic={setIsPublic}
-        />
+          !error && preview &&
+          <LinkPreview
+            data={data}
+            setUrl={setUrl}
+            setPreview={setPreview}
+            createNew={createNew}
+            isPublic={isPublic}
+            setIsPublic={setIsPublic}
+          />
         )}
     </div>
   );
