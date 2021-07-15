@@ -36,7 +36,7 @@ const LinkPreview = (props) => {
       <p>Title: {data.title}</p>
       <p>Description: {data.description}</p>
       <img height="100px" width="100px" src={data.image || placeholder} alt={data.title} /> */}
-      <Bookmark bookmark={data} currentUser={currentUser} />
+      <Bookmark bookmark={{ ...data, image: data.image || placeholder }} currentUser={currentUser} />
     </div>
   );
 };
