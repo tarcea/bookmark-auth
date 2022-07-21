@@ -43,10 +43,10 @@ const ThirdParty = ({ setError }) => {
             <FcGoogle />
           </div>
           <div onClick={handleFacebookAuth}>
-            <FaFacebook />
+            <FaFacebook style={{ color: '#4267B2' }} />
           </div>
           <div onClick={handleGithubAuth}>
-            <FaGithub />
+            <FaGithub style={{ color: '#171515' }} />
           </div>
         </div>
       </div>
