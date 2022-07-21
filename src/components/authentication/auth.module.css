@@ -78,3 +78,18 @@
   width: 100%;
   max-width: 400px;
 }
+/* third party auth */
+.thirdPartyContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.thirdPartyIcons {
+  display: flex;
+}
+
+.thirdPartyIcons div {
+  font-size: x-large;
+  padding-left: 2rem;
+  cursor: pointer;
+}

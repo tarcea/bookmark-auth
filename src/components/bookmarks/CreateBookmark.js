@@ -20,16 +20,13 @@ const CreateBookmark = () => {
     setLoading(true);
     setError('');
     try {
-      const result = await axios.post(
-        baseUrl,
-        {
-          q: url,
-          key: key
-        }
-      );
+      const result = await axios.post(baseUrl, {
+        q: url,
+        key: key,
+      });
       setData(result.data);
     } catch (err) {
-      setError(err.response.data.description)
+      setError(err.response.data.description);
     }
     setLoading(false);
     setPreview(true);
@@ -41,7 +38,7 @@ const CreateBookmark = () => {
   };
 
   const onInputChange = (e) => {
-    setUrl(e.target.value)
+    setUrl(e.target.value);
   };
 
   const ceateItem = (data) => {
@@ -51,15 +48,15 @@ const CreateBookmark = () => {
       description: data.description,
       image: data.image,
       public: isPublic,
-      url: data.url
-    }
-  }
+      url: data.url,
+    };
+  };
 
   const createNew = async () => {
-    const doc = ceateItem(data)
-    await db.collection("bookmarks").add({ ...doc, createdAt: timestamp });
+    const doc = ceateItem(data);
+    await db.collection('bookmarks').add({ ...doc, createdAt: timestamp });
     setData({});
-    setUrl('')
+    setUrl('');
     setPreview(false);
     setIsPublic(false);
   };
@@ -73,35 +70,35 @@ const CreateBookmark = () => {
 
   return (
     <div className={styles.inputPreview}>
-      {!preview ? (<form onSubmit={onFormSubmit}>
-        <input
-          type="text"
-          name="url"
-          value={url}
-          placeholder="paste here the web address "
-          onChange={onInputChange}
-          style={{ width: "200px" }}
-        />
+      {!preview ? (
+        <form onSubmit={onFormSubmit}>
+          <input
+            type='text'
+            name='url'
+            value={url}
+            placeholder='paste here the web address '
+            onChange={onInputChange}
+            style={{ width: '200px' }}
+          />
 
-        <button
-          type="submit"
-          onClick={() => fetchData()}
-          disabled={!url}
-        >
-          preview
-        </button>
-      </form>) : ""}
-      {error &&
+          <button type='submit' onClick={() => fetchData()} disabled={!url}>
+            preview
+          </button>
+        </form>
+      ) : (
+        ''
+      )}
+      {error && (
         <div className={styles.danger} onClick={cancelPreview}>
           {`linkpreview.net error: ${error}`}
           {/* <button className={styles.buttonX} onClick={cancelPreview} style={{top: "-17px", right: "-22px", padding: "4px 7px"}}>X</button> */}
         </div>
-      }
-      {loading
-        ?
+      )}
+      {loading ? (
         <div>loading...</div>
-        : (
-          !error && preview &&
+      ) : (
+        !error &&
+        preview && (
           <LinkPreview
             data={data}
             setUrl={setUrl}
@@ -110,7 +107,8 @@ const CreateBookmark = () => {
             isPublic={isPublic}
             setIsPublic={setIsPublic}
           />
-        )}
+        )
+      )}
     </div>
   );
 };

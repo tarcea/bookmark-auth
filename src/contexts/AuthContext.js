@@ -1,7 +1,11 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { auth } from '../firebase';
+import firebase from 'firebase/app';
 
 const AuthContext = createContext();
+const googleProvider = new firebase.auth.GoogleAuthProvider();
+const facebookProvider = new firebase.auth.FacebookAuthProvider();
+const githubProvider = new firebase.auth.GithubAuthProvider();
 
 export const useAuth = () => {
   return useContext(AuthContext);
@@ -35,8 +39,35 @@ export const AuthProvider = ({ children }) => {
     return currentUser.updatePassword(password);
   };
 
+  const signInWithGoogle = () => {
+    auth
+      .signInWithPopup(googleProvider)
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const signInWithFacebook = () => {
+    auth
+      .signInWithPopup(facebookProvider)
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const signInWithGithub = () => {
+    auth
+      .signInWithPopup(githubProvider)
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => console.log(err));
+  };
+
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(user => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
       setLoading(false);
     });
@@ -51,6 +82,9 @@ export const AuthProvider = ({ children }) => {
     resetPassword,
     updateEmail,
     updatePassword,
+    signInWithGoogle,
+    signInWithFacebook,
+    signInWithGithub,
   };
 
   return (
