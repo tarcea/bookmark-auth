@@ -20,10 +20,11 @@ const CreateBookmark = () => {
     setLoading(true);
     setError('');
     try {
-      const result = await axios.post(baseUrl, {
-        q: url,
-        key: key,
-      });
+      // const result = await axios.post(baseUrl, {
+      //   q: url,
+      //   key: key,
+      // });
+      const result = await axios.get(baseUrl + url);
       setData(result.data);
     } catch (err) {
       setError(err.response.data.description);
