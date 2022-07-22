@@ -1,5 +1,5 @@
-import firebase from "firebase/app";
-import "firebase/auth";
+import firebase from 'firebase/app';
+import 'firebase/auth';
 import 'firebase/firestore';
 
 const app = firebase.initializeApp({
@@ -10,9 +10,8 @@ const app = firebase.initializeApp({
   storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
   appId: process.env.REACT_APP_FIREBASE_APP_ID,
-  measurementId: process.env.REACT_APP_FIREBASE_MESUREMENT_ID
+  measurementId: process.env.REACT_APP_FIREBASE_MESUREMENT_ID,
 });
-
 
 export const auth = app.auth();
 export const db = firebase.firestore();

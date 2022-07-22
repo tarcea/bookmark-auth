@@ -2,12 +2,13 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import styles from './auth.module.css';
+import ThirdParty from './ThirdParty';
 
 const Signup = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
-  const { signup, currentUser } = useAuth();
+  const { signup } = useAuth();
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const mountedRef = useRef(true);
@@ -16,12 +17,12 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-      return setError("Passwords do not match")
+      return setError('Passwords do not match');
     }
     try {
       setError('');
       setLoading(true);
-      if (!mountedRef.current) return null
+      if (!mountedRef.current) return null;
       await signup(emailRef.current.value, passwordRef.current.value);
       history.push('/home');
     } catch {
@@ -30,12 +31,11 @@ const Signup = () => {
     setLoading(false);
   };
 
-
   // cleanup
   useEffect(() => {
-    return () => { 
-      mountedRef.current = false
-    }
+    return () => {
+      mountedRef.current = false;
+    };
   }, []);
 
   return (
@@ -46,25 +46,43 @@ const Signup = () => {
             <p>Sign Up</p>
             {error && <div className={styles.alert}>{error}</div>}
             <form onSubmit={handleSubmit}>
-              <div id="email">
+              <div id='email'>
                 <label></label>
-                <input type="email" ref={emailRef} required placeholder="Email"/>
+                <input
+                  type='email'
+                  ref={emailRef}
+                  required
+                  placeholder='Email'
+                />
               </div>
-              <div id="password">
+              <div id='password'>
                 <label></label>
-                <input type="password" ref={passwordRef} required placeholder="Password"/>
+                <input
+                  type='password'
+                  ref={passwordRef}
+                  required
+                  placeholder='Password'
+                />
               </div>
-              <div id="password-confirm">
+              <div id='password-confirm'>
                 <label></label>
-                <input type="password" ref={passwordConfirmRef} required placeholder="Confirm Password"/>
+                <input
+                  type='password'
+                  ref={passwordConfirmRef}
+                  required
+                  placeholder='Confirm Password'
+                />
               </div>
               <div className={styles.submit}>
-                <button disabled={loading} type="submit">Sign Up</button>
+                <button disabled={loading} type='submit'>
+                  Sign Up
+                </button>
               </div>
             </form>
+            <ThirdParty setError={setError} />
           </div>
           <div>
-            Already have an account? <Link to="/login">Log In</Link>
+            Already have an account? <Link to='/login'>Log In</Link>
           </div>
         </div>
       </div>
