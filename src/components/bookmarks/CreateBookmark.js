@@ -1,9 +1,9 @@
+import axios from 'axios';
 import React, { useState } from 'react';
+import { useAuth } from '../../contexts/AuthContext';
+import { db, timestamp } from '../../firebase';
 import styles from './bookmarks.module.css';
 import LinkPreview from './LinkPreview';
-import axios from 'axios';
-import { db, timestamp } from '../../firebase';
-import { useAuth } from '../../contexts/AuthContext';
 
 const CreateBookmark = () => {
   const { currentUser, logout } = useAuth();
@@ -44,7 +44,7 @@ const CreateBookmark = () => {
 
   const ceateItem = (data) => {
     return {
-      title: data.title,
+      title: data.title || '',
       userId: currentUser.uid,
       description: data.description,
       image: data.image,
