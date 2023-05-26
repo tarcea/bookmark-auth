@@ -58,11 +58,10 @@
   position: absolute;
   top: 4px;
   right: 8px;
-  border: 1px solid #4a4a4a;
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background-color: #f4bfaf;
+  border: none;
   background: rgba(234, 151, 151, 0.4);
 }
 
