@@ -20,7 +20,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "firebase deploy --only hosting:mycoolbookmark"
+    "deploy": "npm run build && firebase deploy --only hosting:mycoolbookmark"
   },
   "eslintConfig": {
     "extends": [

@@ -63,7 +63,7 @@
   height: 30px;
   border-radius: 50%;
   background-color: #f4bfaf;
-  opacity: 60%;
+  background: rgba(234, 151, 151, 0.4);
 }
 
 .buttonEdit {
