@@ -58,15 +58,18 @@
   position: absolute;
   top: 4px;
   right: 8px;
-  border-radius: 8px;
   border: 1px solid #4a4a4a;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #f4bfaf;
+  opacity: 60%;
 }
 
 .buttonEdit {
   position: absolute;
   top: 4px;
   left: 8px;
-  border-radius: 8px;
   border: 1px solid #4a4a4a;
 }
 
