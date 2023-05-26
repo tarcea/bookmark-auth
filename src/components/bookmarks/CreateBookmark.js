@@ -2,8 +2,8 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { db, timestamp } from '../../firebase';
-import styles from './bookmarks.module.css';
 import LinkPreview from './LinkPreview';
+import styles from './bookmarks.module.css';
 
 const CreateBookmark = () => {
   const { currentUser, logout } = useAuth();
@@ -12,7 +12,6 @@ const CreateBookmark = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [preview, setPreview] = useState(false);
-  const key = process.env.REACT_APP_LINKPREVIEW_KEY;
   const baseUrl = process.env.REACT_APP_LINKPREVIEW_BASE_URL;
   const [isPublic, setIsPublic] = useState(false);
 
@@ -20,14 +19,14 @@ const CreateBookmark = () => {
     setLoading(true);
     setError('');
     try {
-      // const result = await axios.post(baseUrl, {
-      //   q: url,
-      //   key: key,
-      // });
       const result = await axios.get(baseUrl + url);
-      setData(result.data);
+      if (result) setData(result.data);
     } catch (err) {
-      setError(err.response.data.description);
+      if (err.response) {
+        setError(err.response.data.description);
+      } else {
+        setError(`Error accessing '${url}', please try another one`);
+      }
     }
     setLoading(false);
     setPreview(true);
