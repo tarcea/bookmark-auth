@@ -43,9 +43,9 @@ const CreateBookmark = () => {
 
   const ceateItem = (data) => {
     return {
-      title: data.title || '',
+      title: data.title || 'No title',
       userId: currentUser.uid,
-      description: data.description,
+      description: data.description || 'No description',
       image: data.image,
       public: isPublic,
       url: data.url,

@@ -12,8 +12,7 @@
   right: 1rem;
   z-index: 2;
 }
-.parent {
-}
+
 .parent {
   margin-top: 24px;
   display: grid;
@@ -44,9 +43,6 @@
 
 .img {
   text-align: center;
-}
-.description {
-  /* margin-bottom: 50px; */
 }
 
 .description p {
