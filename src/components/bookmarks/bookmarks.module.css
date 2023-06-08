@@ -52,20 +52,24 @@
 }
 .buttonX {
   position: absolute;
-  top: 4px;
-  right: 8px;
+  top: 2px;
+  left: 1px;
   width: 30px;
   height: 30px;
   border-radius: 50%;
   border: none;
-  background: rgba(234, 151, 151, 0.4);
+  background: rgba(253, 252, 252, 0.4);
+  color: rgba(255, 87, 34, 0.5);
+  cursor: pointer;
 }
 
 .buttonEdit {
+  color: rgba(255, 87, 34, 0.5);
   position: absolute;
-  top: 4px;
-  left: 8px;
-  border: 1px solid #4a4a4a;
+  top: 8px;
+  right: 12px;
+  border: none;
+  cursor: pointer;
 }
 
 .buttonGhostGo {
