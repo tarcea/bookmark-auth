@@ -34,7 +34,6 @@ const CreateBookmark = () => {
 
   const onFormSubmit = (e) => {
     e.preventDefault();
-    // setUrl('')
   };
 
   const onInputChange = (e) => {
@@ -91,7 +90,6 @@ const CreateBookmark = () => {
       {error && (
         <div className={styles.danger} onClick={cancelPreview}>
           {`linkpreview.net error: ${error}`}
-          {/* <button className={styles.buttonX} onClick={cancelPreview} style={{top: "-17px", right: "-22px", padding: "4px 7px"}}>X</button> */}
         </div>
       )}
       {loading ? (
