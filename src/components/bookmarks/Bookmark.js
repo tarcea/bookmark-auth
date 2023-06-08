@@ -39,13 +39,8 @@ const Bookmark = ({ bookmark, currentUser }) => {
       </div>
       {currentUser && currentUser.uid === bookmark.userId && (
         <>
-          {/* <button className={styles.buttonX} onClick={deleteBookmark}>
-            X
-          </button> */}
           <TiDelete className={styles.buttonX} onClick={deleteBookmark} />
-          {/* <button className={styles.buttonEdit} onClick={editBookmark}>
-            edit
-          </button> */}
+
           <AiTwotoneEdit className={styles.buttonEdit} onClick={editBookmark} />
         </>
       )}

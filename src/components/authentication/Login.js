@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
-import styles from './auth.module.css';
 import ThirdParty from './ThirdParty';
+import styles from './auth.module.css';
 
 const Login = () => {
   const emailRef = useRef();
@@ -27,7 +27,6 @@ const Login = () => {
     setLoading(false);
   };
 
-  // cleanup
   useEffect(() => {
     return () => {
       mountedRef.current = false;
