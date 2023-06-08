@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import styles from './NavbarDesktop.module.css';
+import React, { useEffect, useState } from 'react';
 import { IoAppsSharp } from 'react-icons/io5';
+import { useHistory } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
-import { Link, useHistory } from 'react-router-dom';
 import { scrollToTop } from '../../utils';
+import styles from './NavbarDesktop.module.css';
 
 const NavbarDesktop = () => {
   const [scrollUp, setScrollUp] = useState(null);
@@ -14,39 +14,51 @@ const NavbarDesktop = () => {
 
   const updateScroll = () => {
     setScrollUp(window.pageYOffset);
-  }
-
+  };
 
   useEffect(() => {
-    window.addEventListener("scroll", updateScroll);
-    return () => window.removeEventListener("scroll", updateScroll);
-  }, [])
+    window.addEventListener('scroll', updateScroll);
+    return () => window.removeEventListener('scroll', updateScroll);
+  }, []);
 
   const style = {
-    background: scrollUp > 60 ? (inHover ? "#F24B6A" : "rgba(255, 255, 255, 0)") :
-      (inHover ? "#ff5722" : "rgba(255, 255, 255, 0)"),
-    color: scrollUp > 60 ? (inHover ? "#FFFFFF" : "#F24B6A") : (inHover ? "#FFFFFF" : "#ff5722")
-  }
+    background:
+      scrollUp > 60
+        ? inHover
+          ? '#F24B6A'
+          : 'rgba(255, 255, 255, 0)'
+        : inHover
+        ? '#ff5722'
+        : 'rgba(255, 255, 255, 0)',
+    color:
+      scrollUp > 60
+        ? inHover
+          ? '#FFFFFF'
+          : '#F24B6A'
+        : inHover
+        ? '#FFFFFF'
+        : '#ff5722',
+  };
 
   const whiteStyle = {
-    color: scrollUp > 60 ? "#FFFFFF" : "#888888"
+    color: scrollUp > 60 ? '#FFFFFF' : '#888888',
   };
 
   const redStyle = {
-    color: scrollUp > 60 ? "#F24B6A" : "#ff5722"
-  }
+    color: scrollUp > 60 ? '#F24B6A' : '#ff5722',
+  };
 
   const noLine = {
-    borderBottom: scrollUp > 60 ? 0 : "1px solid #FFFFFF"
-  }
+    borderBottom: scrollUp > 60 ? 0 : '1px solid #FFFFFF',
+  };
 
   const handleLogout = async () => {
-    setError('')
+    setError('');
     try {
       await logout();
-      history.push('/')
+      history.push('/');
     } catch {
-      setError('Failed to log out')
+      setError('Failed to log out');
     }
   };
 
@@ -64,37 +76,30 @@ const NavbarDesktop = () => {
           onClick={navigateHome}
         />
         <div className={styles.desktopMenu}>
-          <div style={whiteStyle}>
-          </div>
-          <div className={styles.desktopLinks} >
+          <div style={whiteStyle}></div>
+          <div className={styles.desktopLinks}>
             <ul>
-              <li
-                style={whiteStyle}
-                onClick={navigateHome}
-              >
+              <li style={whiteStyle} onClick={navigateHome}>
                 Home
               </li>
-              <li
-                style={whiteStyle}
-                onClick={() => history.push('/about')}
-              >
+              <li style={whiteStyle} onClick={() => history.push('/about')}>
                 About
               </li>
 
-              <li
-                style={whiteStyle}
-              >
-                {currentUser
-                  ? <span
+              <li style={whiteStyle}>
+                {currentUser ? (
+                  <span
                     onClick={() => history.push('/dashboard')}
-                    className={scrollUp > 60 ? styles.nameRed : styles.nameOrange}
+                    className={
+                      scrollUp > 60 ? styles.nameRed : styles.nameOrange
+                    }
                   >
                     {currentUser.email}
                   </span>
-                  : <span></span>
-                }
+                ) : (
+                  <span></span>
+                )}
               </li>
-
             </ul>
           </div>
           <div
@@ -103,24 +108,16 @@ const NavbarDesktop = () => {
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
           >
-            {currentUser
-              ? <span
-                onClick={handleLogout}
-              >
-                Logout
-              </span>
-              : <span
-                onClick={() => history.push('/login')}
-              >
-                Login
-              </span>
-            }
+            {currentUser ? (
+              <span onClick={handleLogout}>Logout</span>
+            ) : (
+              <span onClick={() => history.push('/login')}>Login</span>
+            )}
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default NavbarDesktop;
-

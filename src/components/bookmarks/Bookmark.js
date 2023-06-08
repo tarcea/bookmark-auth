@@ -1,4 +1,6 @@
 import React from 'react';
+import { AiTwotoneEdit } from 'react-icons/ai';
+import { TiDelete } from 'react-icons/ti';
 import { db } from '../../firebase';
 import styles from './bookmarks.module.css';
 const placeholder =
@@ -16,10 +18,10 @@ const Bookmark = ({ bookmark, currentUser }) => {
     db.collection('bookmarks').doc(bookmark.id).delete();
   };
 
-  // const editBookmark = (e) => {
-  //   e.stopPropagation();
-  //   alert(`edit '${bookmark.title}' ???`);
-  // };
+  const editBookmark = (e) => {
+    e.stopPropagation();
+    console.log(`please edit '${bookmark.title}'`);
+  };
 
   return (
     <div
@@ -37,15 +39,9 @@ const Bookmark = ({ bookmark, currentUser }) => {
       </div>
       {currentUser && currentUser.uid === bookmark.userId && (
         <>
-          <button className={styles.buttonX} onClick={deleteBookmark}>
-            X
-          </button>
-          {/* <button
-            className={styles.buttonEdit}
-            onClick={editBookmark}
-          >
-            edit
-          </button> */}
+          <TiDelete className={styles.buttonX} onClick={deleteBookmark} />
+
+          <AiTwotoneEdit className={styles.buttonEdit} onClick={editBookmark} />
         </>
       )}
     </div>
