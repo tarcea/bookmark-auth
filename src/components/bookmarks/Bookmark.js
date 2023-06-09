@@ -3,8 +3,7 @@ import { AiTwotoneEdit } from 'react-icons/ai';
 import { TiDelete } from 'react-icons/ti';
 import { db } from '../../firebase';
 import styles from './bookmarks.module.css';
-const placeholder =
-  'https://firebasestorage.googleapis.com/v0/b/list-101.appspot.com/o/placeholder.jpg?alt=media&token=72924b11-5bf4-4ecd-a793-a6bd329acdcd';
+const placeholder = 'https://picsum.photos/300/200?grayscale&random';
 
 const Bookmark = ({ bookmark, currentUser }) => {
   const deleteBookmark = (e) => {
@@ -15,7 +14,9 @@ const Bookmark = ({ bookmark, currentUser }) => {
     if (!confirmDelete) {
       return;
     }
-    db.collection('bookmarks').doc(bookmark.id).delete();
+    db.collection('bookmarks')
+      .doc(bookmark.id)
+      .delete();
   };
 
   const editBookmark = (e) => {

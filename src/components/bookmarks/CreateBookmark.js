@@ -4,6 +4,7 @@ import { useAuth } from '../../contexts/AuthContext';
 import { db, timestamp } from '../../firebase';
 import LinkPreview from './LinkPreview';
 import styles from './bookmarks.module.css';
+const placeholder = 'https://picsum.photos/300/200?grayscale&random';
 
 const CreateBookmark = () => {
   const { currentUser, logout } = useAuth();
