@@ -46,7 +46,7 @@ const CreateBookmark = () => {
       title: data.title || 'No title',
       userId: currentUser.uid,
       description: data.description || 'No description',
-      image: data.image,
+      image: data.image || '',
       public: isPublic,
       url: data.url,
     };
@@ -54,6 +54,7 @@ const CreateBookmark = () => {
 
   const createNew = async () => {
     const doc = ceateItem(data);
+    console.log({ doc });
     await db.collection('bookmarks').add({ ...doc, createdAt: timestamp });
     setData({});
     setUrl('');
