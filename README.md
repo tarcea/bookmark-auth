@@ -10,3 +10,9 @@ When you navigate at https://mycoolbookmark.web.app, you can see the page with a
 - React (hooks, router, context, css.module)
 - plain CSS.
 - external API, https://github.com/tarcea/api-link-preview-jsdom
+
+  deployed on firebase
+
+  set env variables in firebase console:
+
+  `firebase functions:config:set reactapp.linkpreview_base_url="https://valuable-cherry-shirt.glitch.me/api?url="`
